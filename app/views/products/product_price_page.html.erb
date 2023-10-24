@@ -1,0 +1,16 @@
+<h1>Fetch Product Price</h1>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
+<% if @product_name && @product_price %>
+  <h2>Product Name: <%= @product_name %></h2>
+  <h2>Product Price: <%= @product_price %></h2>
+<% end %>
+
+<%= link_to 'Back', products_path, class: 'btn btn-secondary' %>

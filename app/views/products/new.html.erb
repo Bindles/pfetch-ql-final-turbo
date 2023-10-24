@@ -1,0 +1,24 @@
+<h1>New product</h1>
+
+<%= render "form", product: @product %>
+
+<br>
+<%= form_with(model: @product, url: fetch_product_price_products_path, method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :entity_id %>
+    <%= form.number_field :entity_id, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Fetch Product Data', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+
+<div>
+  <%= link_to "Back to products", products_path %>
+</div>
+
+
+
+
