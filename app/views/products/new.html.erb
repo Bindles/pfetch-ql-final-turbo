@@ -14,6 +14,12 @@
   </div>
 <% end %>
 
+<%= form_tag(fetch_product_price_products_path, method: :post) do %>
+  <label for="entity_id">Entity ID:</label>
+  <%= text_field_tag(:entity_id, nil, required: true) %>
+  <%= submit_tag('Fetch Price') %>
+<% end %>
+
 
 <div>
   <%= link_to "Back to products", products_path %>

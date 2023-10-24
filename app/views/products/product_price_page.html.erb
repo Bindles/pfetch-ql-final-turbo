@@ -7,10 +7,11 @@
 <% if flash[:alert] %>
   <div class="alert alert-danger"><%= flash[:alert] %></div>
 <% end %>
-
-<% if @product_name && @product_price %>
-  <h2>Product Name: <%= @product_name %></h2>
-  <h2>Product Price: <%= @product_price %></h2>
-<% end %>
-
+<div id="a">
+    z
+    <% if @product_name && @product_price %>
+    <h2>Product Name: <%= @product_name %></h2>
+    <h2>Product Price: <%= @product_price %></h2>
+    <% end %>
+</div>
 <%= link_to 'Back', products_path, class: 'btn btn-secondary' %>

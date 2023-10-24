@@ -59,12 +59,13 @@ class ProductsController < ApplicationController
 
   def fetch_product_price
     entity_id = params[:entity_id]
+    #entity_id = 4786
 
     # Replace the following query with your actual GraphQL query.
-graphql_query = <<~GRAPHQL
+    graphql_query = <<~GRAPHQL
       {
         site {
-          products(entityIds: 1) {
+          products(entityIds: #{entity_id}) {
             edges {
               node {
                 name
@@ -103,7 +104,7 @@ graphql_query = <<~GRAPHQL
     @product = Product.new(name: @product_name, price: @product_price, entity_id: entity_id)
 
     # Render the 'product_price_page' view with @product_name and @product_price
-    render 'new'
+    render 'new', turbo_stream: false
   rescue StandardError => e
     flash[:alert] = "Error fetching product price: #{e.message}"
     render 'product_price_page'
