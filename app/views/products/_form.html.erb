@@ -24,9 +24,25 @@
   <div>
     <%= form.label :entity_id, style: "display: block" %>
     <%= form.number_field :entity_id %>
+    
   </div>
 
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+
+<%= form_with(model: @product, url: fetch_product_price_products_path, method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :entity_id %>
+    <%= form.number_field :entity_id, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Fetch Product Data', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+    <h2>Product Name: <%= @product_name %></h2>
+    <h2>Product Price: <%= @product_price %></h2>

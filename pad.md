@@ -1,3 +1,22 @@
+     "name": "Uwell Caliburn A3 Replacement Pod Cartridge (Pack of 4)",
+                            "path": "/uwell-caliburn-a3-replacement-pod-cartridge-pack-of-4/",
+                            "defaultImage": {
+                                "url": "https://cdn11.bigcommerce.com/s-8tn3otes3v/images/stencil/100w/products/5757/22971/Uwell_Caliburn_A3_Replacement_Pod_Cartridge__73163__67035.1683760110.jpg"
+                            },
+                            "availabilityV2": {
+                                "status": "Available"
+                            },
+                            "prices": {
+                                "price": {
+                                    "value": 12.99,
+                                    "currencyCode": "USD"
+                                },
+                                "retailPrice": {
+                                    "value": 19.49,
+                                    "currencyCode": "USD"
+                                }
+                            },
+
 <%= button_to 'Fetch Data', url_for(action: 'fetch_product_data', controller: 'products', id: @product), method: :post, class: 'btn btn-primary' %>
 
 Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJjaWQiOjEsImNvcnMiOlsiaHR0cHM6Ly93d3cuZWNpZ21hZmlhLmNvbSJdLCJlYXQiOjE2OTgyMzA2OTMsImlhdCI6MTY5ODA1Nzg5MywiaXNzIjoiQkMiLCJzaWQiOjk5OTcwNTkzOCwic3ViIjoiYmNhcHAubGlua2VyZCIsInN1Yl90eXBlIjowLCJ0b2tlbl90eXBlIjoxfQ.cY55gRQfc89_xRCTl0tN3UUvGvUh2nN3suaNEWjrzQDEWxVUDTyvEQL8NeCISKPKXroMchizPUMpCUA_z1cHlg

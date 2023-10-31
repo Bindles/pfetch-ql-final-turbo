@@ -82,7 +82,7 @@ class ProductsController < ApplicationController
       }
     GRAPHQL
 
-    authorization_token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJjaWQiOjEsImNvcnMiOlsiaHR0cHM6Ly93d3cuZWNpZ21hZmlhLmNvbSJdLCJlYXQiOjE2OTgyMzA2OTMsImlhdCI6MTY5ODA1Nzg5MywiaXNzIjoiQkMiLCJzaWQiOjk5OTcwNTkzOCwic3ViIjoiYmNhcHAubGlua2VyZCIsInN1Yl90eXBlIjowLCJ0b2tlbl90eXBlIjoxfQ.cY55gRQfc89_xRCTl0tN3UUvGvUh2nN3suaNEWjrzQDEWxVUDTyvEQL8NeCISKPKXroMchizPUMpCUA_z1cHlg'  # Replace with your actual token
+    authorization_token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJjaWQiOjEsImNvcnMiOlsiaHR0cHM6Ly93d3cuZWNpZ21hZmlhLmNvbSJdLCJlYXQiOjE2OTg4MzU1MTYsImlhdCI6MTY5ODY2MjcxNiwiaXNzIjoiQkMiLCJzaWQiOjk5OTcwNTkzOCwic3ViIjoiYmNhcHAubGlua2VyZCIsInN1Yl90eXBlIjowLCJ0b2tlbl90eXBlIjoxfQ.F1BZCmn7gp53oj9vmB-2mFhO_0PGiHx4EEmONlNMB2_eMRjiJ_wfBqLkz6l61tODbwHQg3zpMdp_k5mX0afV4g'  # Replace with your actual token
 
     response = HTTParty.post('https://ecigmafia.com/graphql', body: { query: graphql_query }.to_json, headers: { 'Authorization' => authorization_token, 'Content-Type' => 'application/json' })
 
@@ -104,7 +104,21 @@ class ProductsController < ApplicationController
     @product = Product.new(name: @product_name, price: @product_price, entity_id: entity_id)
 
     # Render the 'product_price_page' view with @product_name and @product_price
-    render 'new', turbo_stream: false
+    #render 'new', turbo_stream: false
+  
+   respond_to do |format|
+    format.turbo_stream do
+      render turbo_stream: turbo_stream.update(
+        @product,
+        partial: 'form',
+        locals: { product: @product }
+      )
+    end
+    #format.html { render 'new' }
+  end
+  
+
+  
   rescue StandardError => e
     flash[:alert] = "Error fetching product price: #{e.message}"
     render 'product_price_page'

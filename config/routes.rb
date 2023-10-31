@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   #     post 'fetch_data', to: 'products#fetch_product_data'
   #   end
   # end
-  # 
+  root 'products#index'
   resources :products do
     post 'fetch_product_price', on: :collection
   end

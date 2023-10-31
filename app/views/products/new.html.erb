@@ -1,29 +1,32 @@
 <h1>New product</h1>
 
-<%= render "form", product: @product %>
-
-<br>
-<%= form_with(model: @product, url: fetch_product_price_products_path, method: :post) do |form| %>
-  <div class="field">
-    <%= form.label :entity_id %>
-    <%= form.number_field :entity_id, class: 'form-control' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Fetch Product Data', class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
 <%= form_tag(fetch_product_price_products_path, method: :post) do %>
   <label for="entity_id">Entity ID:</label>
   <%= text_field_tag(:entity_id, nil, required: true) %>
   <%= submit_tag('Fetch Price') %>
 <% end %>
 
+<br>
+<%= turbo_frame_tag dom_id(@product) do %>
+<%= render "form", product: @product %>
+<% end %>
+
+
+<div id="new_product">
+    z
+    <% if @product_name && @product_price %>
+    <h2>Product Name: <%= @product_name %></h2>
+    <h2>Product Price: <%= @product_price %></h2>
+    <% end %>
+</div>
+
+
 
 <div>
   <%= link_to "Back to products", products_path %>
 </div>
+
+
 
 
 
